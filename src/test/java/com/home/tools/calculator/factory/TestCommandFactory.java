@@ -2,73 +2,92 @@ package com.home.tools.calculator.factory;
 
 import com.home.tools.calculator.command.*;
 import com.home.tools.calculator.expression.Expression;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestCommandFactory {
+class TestCommandFactory {
 
-    Stack<Expression> history;
-    Stack<Expression> future;
+    Deque<Expression> history = new ArrayDeque<>();
+    Deque<Expression> future = new ArrayDeque<>();
 
     @Test
     @DisplayName("Test creation of Addition command")
-    public void testCreationOfAddition() {
+    void testCreationOfAddition() {
         Command command = CommandFactory.newCommand("+", history, future);
         assertTrue(command instanceof Addition);
     }
     @Test
     @DisplayName("Test creation of Subtraction command")
-    public void testCreationOfSubtraction() {
+    void testCreationOfSubtraction() {
         Command command = CommandFactory.newCommand("-", history, future);
         assertTrue(command instanceof Subtraction);
     }
     @Test
     @DisplayName("Test creation of Multiplication command")
-    public void testCreationOfMultiplication() {
+    void testCreationOfMultiplication() {
         Command command = CommandFactory.newCommand("*", history, future);
         assertTrue(command instanceof Multiplication);
     }
 
     @Test
     @DisplayName("Test creation of Division command")
-    public void testCreationOfDivision() {
+    void testCreationOfDivision() {
         Command command = CommandFactory.newCommand("/", history, future);
         assertTrue(command instanceof Division);
     }
 
     @Test
     @DisplayName("Test creation of Sqrt command")
-    public void testCreationOfSqrt() {
+    void testCreationOfSqrt() {
         Command command = CommandFactory.newCommand("sqrt", history, future);
         assertTrue(command instanceof Sqrt);
     }
     @Test
     @DisplayName("Test creation of Undo command")
-    public void testCreationOfUndo() {
+    void testCreationOfUndo() {
         Command command = CommandFactory.newCommand("undo", history, future);
         assertTrue(command instanceof Undo);
     }
 
     @Test
     @DisplayName("Test creation of Clear command")
-    public void testCreationOfClear() {
+    void testCreationOfClear() {
         Command command = CommandFactory.newCommand("clear", history, future);
         assertTrue(command instanceof Clear);
     }
 
     @Test
     @DisplayName("Test creation of an non implemented command")
-    public void testCreationOfAnUndefinedCommand() {
+    void testCreationOfAnUndefinedCommand() {
         IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
-            CommandFactory.newCommand("crazy", null, null);
+            CommandFactory.newCommand("crazy", history, future);
         });
         assertTrue(undefinedException.getMessage().contains("Invalid Command crazy"));
+    }
+
+    @Test
+    @DisplayName("Test creation commands with history Queue parameter as NULL")
+    void testCreationOfCommandWithHistoryQueueAsNull() {
+        IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
+            CommandFactory.newCommand("+", null, future);
+        });
+        assertTrue(undefinedException.getMessage().contains("Arguments to the Constructor cannot be null"));
+    }
+
+
+    @Test
+    @DisplayName("Test creation commands with future Queue parameter as NULL")
+    void testCreationOfCommandWithFutureQueueAsNull() {
+        IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
+            CommandFactory.newCommand("-", history, null);
+        });
+        assertTrue(undefinedException.getMessage().contains("Arguments to the Constructor cannot be null"));
     }
 
 }

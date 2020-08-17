@@ -13,7 +13,16 @@ public abstract class Command {
 	protected Deque<Expression> history;
 	protected Deque<Expression> future;
 
+	/**
+	 *
+	 * @param history
+	 * @param future
+	 * @throws IllegalArgumentException in case any of the arguments is null
+	 */
 	public Command(Deque<Expression> history, Deque<Expression> future) {
+		if(history == null || future == null){
+			throw new IllegalArgumentException ("Arguments to the Constructor cannot be null");
+		}
 		this.history=history;
 		this.future=future;
 	}

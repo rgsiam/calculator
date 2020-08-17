@@ -4,6 +4,7 @@ import com.home.tools.calculator.command.Command;
 import com.home.tools.calculator.expression.Expression;
 import com.home.tools.calculator.factory.CommandFactory;
 import com.home.tools.calculator.factory.ExpressionFactory;
+import com.home.tools.calculator.utils.Helper;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -42,43 +43,30 @@ public class CommandExecutor {
 		String errorMessage = "";
 		try {
 			String[] commandsArray = input.split(" ");
-
 			for (String command : commandsArray) {
 				currentCommand = command;
 				Command cmd = this.commands.get(command);
-				if (cmd == null && !isNumeric(command))
-					raiseException("Invalid expression " + command);
-				else if (cmd == null && isNumeric(command))
-					this.history.push(ExpressionFactory.createExpression(Double.valueOf(command)));
-				else
+				if(cmd!=null)
 					cmd.execute();
-				position ++;
+				else pushConstantExpression(command);
+				position+=command.length()+1;
 			}
 		} catch (IllegalArgumentException exception){
-			errorMessage=	String.format("Operator '%s' (position:%2d) %s", currentCommand,position,exception.getMessage());
+			errorMessage=String.format("Operator '%s' (position:%2d) %s", currentCommand,position,exception.getMessage());
 		}
-		finally {
-			return errorMessage.isEmpty() ? getStackState() : errorMessage + System.lineSeparator() + getStackState();
-		}
+		return errorMessage.isEmpty() ? getStackState() : errorMessage + System.lineSeparator() + getStackState();
+	}
 
+	private void pushConstantExpression(String value) {
+		if (!Helper.isNumeric(value))
+			Helper.raiseException("Invalid expression " + value);
+		this.history.push(ExpressionFactory.createExpression(Double.valueOf(value)));
 	}
 
 	private String getStackState() {
 		StringJoiner joiner = new StringJoiner(" ");
 		history.descendingIterator().forEachRemaining(his -> joiner.add(his.toString()));
-		return String.format("stack: %s", joiner);
+		return joiner.toString();
 	}
 
-	private void raiseException(String message) {
-		throw new IllegalArgumentException(message);
-	}
-
-	private boolean isNumeric(String num) {
-		try {
-			Double.parseDouble(num);
-		} catch (NumberFormatException nfe) {
-			return false;
-		}
-		return true;
-	}
 }

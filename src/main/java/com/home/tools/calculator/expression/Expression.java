@@ -19,8 +19,12 @@ public abstract class Expression {
 	 * Default construct Used by {@code com.home.tools.calculator.expression.ConstantExpression}
 	 * @param result Result of the Expression as {@link Double}
 	 * @since 1.0
+	 * @throws IllegalArgumentException In case the argument is NULL
 	 */
 	public Expression(Double result) {
+		if(result == null){
+			throw new IllegalArgumentException("Argument to the Constructor cannot be null");
+		}
 		this.result=result;
 	}
 	/**
