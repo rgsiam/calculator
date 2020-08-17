@@ -21,7 +21,6 @@ public class Division extends Command{
 	}
 	/**
 	 * Execution of the command
-	 * @return List of Expressions
 	 */
 	@Override
 	public void execute() {

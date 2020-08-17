@@ -18,15 +18,16 @@ public class Undo extends Command{
 		super(history, future);
 	}
 	/**
-	 * Execution of the command
-	 * @return List of Expressions
+	 * Execution of the command Undo
+	 * Holds the Undone operation in <pre>future<pre/> Queue
 	 */
 	@Override
 	public void execute() {
-		checkStackSize(1);
-		Expression expression = history.pop();
-		for(Expression exp:expression.operands())
-			history.push(exp);
-	}
-
+			checkStackSize(1);
+			Expression expression = history.pop();
+			for (Expression exp : expression.operands()) {
+				history.push(exp);
+			}
+			future.push(expression);
+		}
 }
