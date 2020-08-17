@@ -15,12 +15,21 @@
 12. If an operator cannot find a sufficient number of parameters on the stack, a warning is displayed:operator (position: ): insufficient parameters
 13. After displaying the warning, all further processing of the string terminates and the current state of the stack is displayed.
 
+# Tools and Technologies used
+  * [Java 9](https://docs.oracle.com/javase/9/docs/)
+  * [JUnit 5](https://junit.org/junit5/docs/current/user-guide/)
+  * [Log4J](https://logging.apache.org/log4j/2.x/)
+  * [Maven](https://maven.apache.org//)
+
+# How to Build and Test application
+   [maven command =>] mvn clean install
+     
 ###Command Line Usage :
 1. Execute the method <pre>main</pre> of CalculatorREPL.java to use the RPN Calculator in Command line mode
 2. Alternatively use method <pre>evaluate</pre>  of Calculator.java
 
 ####Note: 
-1. Log4 config : Log file Path to be supplied at runtime with variable "LOG_ROOT"
+1. Log4 config : Log file Path to be supplied at runtime with variable "LOG_PATH"
 
 ####TODO :
 #####Design Choices
@@ -28,3 +37,6 @@
 2. See if we can further decouple the CommandExecutor.java without loosing control over the Queues or State of the Application
 3. Use environment specific logging while we go online 
 4. Implement Undo to also **undo** a Clear Command!
+
+# Mailing Lists
+    - rgsiam@gmail.com
