@@ -50,7 +50,7 @@ public abstract class Expression {
 
 	/**
 	 *
-	 * @return Returns {@link List} list of Operands {@link Expression} associated with and {@link Expression}
+	 * @return Returns {@link List} list of Operands {@link Expression} associated with an {@link Expression}
 	 * @since 1.0
 	 */
 	public abstract List<Expression> operands();
