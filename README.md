@@ -15,8 +15,8 @@
 12. If an operator cannot find a sufficient number of parameters on the stack, a warning is displayed:operator (position: ): insufficient parameters
 13. After displaying the warning, all further processing of the string terminates and the current state of the stack is displayed.
 
-###CommandLine Usage :
-1. Execute the method <pre>main</pre> of CalculatorREPL.java to use the RPN Calculator in Command code
+###Command Line Usage :
+1. Execute the method <pre>main</pre> of CalculatorREPL.java to use the RPN Calculator in Command line mode
 2. Alternatively use method <pre>evaluate</pre>  of Calculator.java
 
 ####Note: 
