@@ -56,8 +56,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
     @Test
     @DisplayName("Test operators with insufficient parameters to check Stack result and position of Command")
      void testExample8() {
-        Double d = null;
-        System.out.printf(" " + Boolean.valueOf(0.0 == d));
         String evaluatedResult = commandExecutor.evaluate("1 2 3 * 5 + * * 6 5");
         assertTrue(evaluatedResult.contains("Operator '*' (position:15)  insufficient parameters"));
         assertTrue(evaluatedResult.contains("11"));
