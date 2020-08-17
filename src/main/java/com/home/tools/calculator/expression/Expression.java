@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 /**
  * {@code Expression} defines the abstraction to support various types of {@link Expression} such as {@link UnaryExpression}
- * such as {@link BinaryExpression}, {@link ConstantExpression} open to such further extentions
+ * such as {@link BinaryExpression}, {@link ConstantExpression} open to such extension of this Class
  * @since 1.0
  *
  */
@@ -16,7 +16,7 @@ public abstract class Expression {
 	private Double result;
 
 	/**
-	 * Default construct Used by {@code com.home.tools.calculator.expression.ConstantExpression}
+	 * Default construct to be used by extended classes
 	 * @param result Result of the Expression as {@link Double}
 	 * @since 1.0
 	 * @throws IllegalArgumentException In case the argument is NULL

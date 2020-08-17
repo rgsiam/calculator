@@ -14,46 +14,34 @@ import org.junit.jupiter.api.Test;
 
 import com.home.tools.calculator.expression.Expression;
 
-class TestAddition {
+class TestUndo {
 	
 	private Deque<Expression> history;
 	private Deque<Expression> future;
-	private Addition addition;
+	private Undo undo;
 		
 	@BeforeEach
 	public void setup() {
 		history=new ArrayDeque<>();
 		future=new ArrayDeque<>();
-		addition= new Addition(history, future);
+		undo= new Undo(history, future);
 	}
 
 	@Test
-	@DisplayName("Test Adding 2 positive numbers should pass")
-	public void testAdditionNormal() {
+	@DisplayName("Test Undo should remove the previous expression from history")
+	public void testUndoNormal() {
+		history.push(createExpression(25.0));
 		history.push(createExpression(10.0));
-		history.push(createExpression(10.0));
-		addition.execute();
-		assertEquals("20",history.pop().toString());
+		undo.execute();
+		assertEquals("25", history.pop().toString());
 	}
 	
 	@Test
-	@DisplayName("Test Adding 2 mixed numbers should pass with Precision check")
-	public void testAdditionOfMixedNumbersWithPrecision() {
-		history.push(createExpression(-10.0));
-		history.push(createExpression(15.127339302022627));
-		addition.execute();
-		assertEquals("5.127339302", history.peek().toString());
-	}
-	
-	@Test
-	@DisplayName("Test Adding 1 number alone should throw Exception")
-	public void testAdditionInvalid() {
-		history.push(createExpression(-10.0));
+	@DisplayName("Test Undo on empty history queue should throw Exception")
+	public void testUndoInvalid() {
 		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
-			addition.execute();
+			undo.execute();
         });
         assertTrue(undefinedException.getMessage().contains("Insufficient parameters"));
-    
 	}
-
 }

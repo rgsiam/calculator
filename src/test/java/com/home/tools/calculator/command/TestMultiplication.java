@@ -14,46 +14,44 @@ import org.junit.jupiter.api.Test;
 
 import com.home.tools.calculator.expression.Expression;
 
-class TestAddition {
+class TestMultiplication {
 	
 	private Deque<Expression> history;
 	private Deque<Expression> future;
-	private Addition addition;
+	private Multiplication multiplication;
 		
 	@BeforeEach
 	public void setup() {
 		history=new ArrayDeque<>();
 		future=new ArrayDeque<>();
-		addition= new Addition(history, future);
+		multiplication= new Multiplication(history, future);
 	}
 
 	@Test
-	@DisplayName("Test Adding 2 positive numbers should pass")
-	public void testAdditionNormal() {
+	@DisplayName("Test Multiplying 2 positive numbers should pass")
+	public void testMultiplicationNormal() {
 		history.push(createExpression(10.0));
 		history.push(createExpression(10.0));
-		addition.execute();
-		assertEquals("20",history.pop().toString());
+		multiplication.execute();
+		assertEquals(history.peek().result().doubleValue(), 100.0);
 	}
 	
 	@Test
-	@DisplayName("Test Adding 2 mixed numbers should pass with Precision check")
-	public void testAdditionOfMixedNumbersWithPrecision() {
-		history.push(createExpression(-10.0));
-		history.push(createExpression(15.127339302022627));
-		addition.execute();
-		assertEquals("5.127339302", history.peek().toString());
+	@DisplayName("Test Multiplying 2 mixed numbers should pass")
+	public void testMultiplicationOfMixedNumbersWithPrecision() {
+		history.push(createExpression(10.1234342233456));
+		history.push(createExpression(-15.0));
+		multiplication.execute();
+		assertEquals( "-151.8515133501",history.pop().toString());
 	}
 	
 	@Test
-	@DisplayName("Test Adding 1 number alone should throw Exception")
-	public void testAdditionInvalid() {
+	@DisplayName("Test Multiplying with one input should throw Exception")
+	public void testMultiplicationInvalid() {
 		history.push(createExpression(-10.0));
 		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
-			addition.execute();
+			multiplication.execute();
         });
         assertTrue(undefinedException.getMessage().contains("Insufficient parameters"));
-    
 	}
-
 }
