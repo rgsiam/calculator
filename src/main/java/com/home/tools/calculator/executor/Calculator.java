@@ -1,6 +1,4 @@
-package com.home.tools.calculator.app;
-
-import com.home.tools.calculator.executor.CommandExecutor;
+package com.home.tools.calculator.executor;
 
 /**
  * A simple <pre>Calculator</pre> implementation to be utilized by clients

@@ -65,12 +65,4 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         assertTrue(evaluatedResult.contains("11"));
     }
 
-     @Test
-     @DisplayName("Test the sanctity of the commands map initialized by the constructor")
-     @Disabled ("To be handled")
-     void testSanctityOfCommandsMap() {
-        commandExecutor.getCommands();
-         assertTrue("".contains("11"));
-     }
-
 }

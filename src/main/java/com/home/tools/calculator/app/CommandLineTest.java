@@ -1,5 +1,7 @@
 package com.home.tools.calculator.app;
 
+import com.home.tools.calculator.executor.Calculator;
+
 import java.util.Scanner;
 
 public class CommandLineTest {

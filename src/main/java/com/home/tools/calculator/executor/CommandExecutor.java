@@ -5,17 +5,17 @@ import com.home.tools.calculator.expression.Expression;
 import com.home.tools.calculator.factory.CommandFactory;
 import com.home.tools.calculator.factory.ExpressionFactory;
 import com.home.tools.calculator.utils.HelperUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Map;
 import java.util.StringJoiner;
 
-public class CommandExecutor {
-	Logger logger = LoggerFactory.getLogger(CommandExecutor.class);
+class CommandExecutor {
 
+	Logger logger = LogManager.getLogger(CommandExecutor.class);
 	private final Map<String, Command> commands;
 	private final Deque<Expression> history;
 	private final Deque<Expression> future;
@@ -61,16 +61,12 @@ public class CommandExecutor {
 			logger.warn("" ,exception);
 			errorMessage=String.format("Operator '%s' (position:%2d) %s", currentCommand,position,exception.getMessage());
 		} catch (Exception exception){
-			/**Exception is catched to allow the application to continue to service in case of Failure To be Refined further
-			 * based on usuage and exposure criterias*/
+			/**NOTE:Exception is catched to allow the application to continue to service in case of Failure To be Refined further
+			 * based on usage and exposure conditions*/
 			logger.error("Unexpected Exception occurred : " ,exception);
 			errorMessage  = "Invalid response";
 		}
 		return errorMessage.isEmpty() ? getStackState() : errorMessage + System.lineSeparator() + getStackState();
-	}
-
-	public Map<String, Command> getCommands() {
-		return commands;
 	}
 
 	private void pushConstantExpression(String value) {
