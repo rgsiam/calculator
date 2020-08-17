@@ -4,6 +4,10 @@ import com.home.tools.calculator.expression.Expression;
 import com.home.tools.calculator.factory.ExpressionFactory;
 import java.util.Deque;
 
+/**
+ * Sqrt Command Implementation
+ * @since 1.0
+ */
 public class Sqrt extends Command{
 
 	public Sqrt(Deque<Expression> history, Deque<Expression> future) {

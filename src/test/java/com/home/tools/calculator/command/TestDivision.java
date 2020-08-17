@@ -42,7 +42,7 @@ class TestDivision {
 		history.push(createExpression(15.0));
 		history.push(createExpression(-10.0));
 		division.execute();
-		assertEquals("1.5",history.pop().toString());
+		assertEquals("-1.5",history.pop().toString());
 	}
 
 	@Test
@@ -72,6 +72,6 @@ class TestDivision {
 		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
 			division.execute();
         });
-        assertTrue(undefinedException.getMessage().contains("Insufficient parameters"));
+        assertTrue(undefinedException.getMessage().contains("insufficient parameters"));
 	}
 }

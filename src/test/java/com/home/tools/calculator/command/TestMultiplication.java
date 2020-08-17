@@ -52,6 +52,6 @@ class TestMultiplication {
 		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
 			multiplication.execute();
         });
-        assertTrue(undefinedException.getMessage().contains("Insufficient parameters"));
+        assertTrue(undefinedException.getMessage().contains("insufficient parameters"));
 	}
 }

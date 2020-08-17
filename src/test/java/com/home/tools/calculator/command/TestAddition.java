@@ -52,7 +52,7 @@ class TestAddition {
 		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
 			addition.execute();
         });
-        assertTrue(undefinedException.getMessage().contains("Insufficient parameters"));
+        assertTrue(undefinedException.getMessage().contains("insufficient parameters"));
     
 	}
 

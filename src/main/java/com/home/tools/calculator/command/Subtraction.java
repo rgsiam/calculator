@@ -5,6 +5,10 @@ import com.home.tools.calculator.factory.ExpressionFactory;
 
 import java.util.Deque;
 
+/**
+ * Subtraction Command Implementation
+ * @since 1.0
+ */
 public class Subtraction extends Command{
 
 	public Subtraction(Deque<Expression> history, Deque<Expression> future) {

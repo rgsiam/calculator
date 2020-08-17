@@ -4,6 +4,10 @@ import com.home.tools.calculator.expression.Expression;
 
 import java.util.Deque;
 
+/**
+ * Undo Command Implementation
+ * @since 1.0
+ */
 public class Undo extends Command{
 
 	public Undo(Deque<Expression> history, Deque<Expression> future) {

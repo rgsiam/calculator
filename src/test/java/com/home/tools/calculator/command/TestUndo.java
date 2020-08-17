@@ -42,6 +42,6 @@ class TestUndo {
 		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
 			undo.execute();
         });
-        assertTrue(undefinedException.getMessage().contains("Insufficient parameters"));
+        assertTrue(undefinedException.getMessage().contains("insufficient parameters"));
 	}
 }

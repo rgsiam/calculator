@@ -52,6 +52,6 @@ class TestSubtraction {
 		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
 			subtraction.execute();
         });
-        assertTrue(undefinedException.getMessage().contains("Insufficient parameters"));
+        assertTrue(undefinedException.getMessage().contains("insufficient parameters"));
 	}
 }

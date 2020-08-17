@@ -7,7 +7,6 @@ import java.util.Deque;
 
 /**
  * Factory to be used to fetch desired Commands based on representation of the {@code Command}
- *
  * @since 1.0
  */
 public class CommandFactory {

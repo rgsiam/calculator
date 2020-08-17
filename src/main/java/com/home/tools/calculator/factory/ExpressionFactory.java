@@ -5,6 +5,10 @@ import com.home.tools.calculator.expression.ConstantExpression;
 import com.home.tools.calculator.expression.Expression;
 import com.home.tools.calculator.expression.UnaryExpression;
 
+/**
+ * Factory Handles creation of and Expresion based of number of operands
+ * @since 1.0
+ */
 public class ExpressionFactory {
 	public static Expression createExpression(Double item) {
 		return new ConstantExpression(item);

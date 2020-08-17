@@ -41,6 +41,6 @@ class TestSqrt {
 		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
 			sqrt.execute();
         });
-        assertTrue(undefinedException.getMessage().contains("Insufficient parameters"));
+        assertTrue(undefinedException.getMessage().contains("insufficient parameters"));
 	}
 }

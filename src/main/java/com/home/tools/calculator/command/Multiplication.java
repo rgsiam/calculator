@@ -5,6 +5,10 @@ import com.home.tools.calculator.factory.ExpressionFactory;
 
 import java.util.Deque;
 
+/**
+ * Multiplication Command Implementation
+ * @since 1.0
+ */
 public class Multiplication extends Command{
 
 	public Multiplication(Deque<Expression> history, Deque<Expression> future) {

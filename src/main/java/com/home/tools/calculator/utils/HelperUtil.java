@@ -1,5 +1,9 @@
 package com.home.tools.calculator.utils;
 
+/**
+ * Utility class to help with basic checks
+ * @since 1.0
+ */
 public final class HelperUtil {
 	private HelperUtil(){
 		//Do nothing
