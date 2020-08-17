@@ -21,7 +21,7 @@ class TestClear {
 	private Clear clear;
 		
 	@BeforeEach
-	public void setup() {
+	 void setup() {
 		history=new ArrayDeque<>();
 		future=new ArrayDeque<>();
 		clear= new Clear(history, future);
@@ -29,7 +29,7 @@ class TestClear {
 
 	@Test
 	@DisplayName("Test Clear of entire history")
-	public void testClearNormal() {
+	 void testClearNormal() {
 		history.push(createExpression(25.0));
 		history.push(createExpression(10.0));
 		history.push(createExpression(10.0));
@@ -39,7 +39,7 @@ class TestClear {
 	
 	@Test
 	@DisplayName("Test Clear on empty history")
-	public void testClearNoNumber() {
+	 void testClearNoNumber() {
 		clear.execute();
         assertTrue(history.isEmpty());
 	}

@@ -1,7 +1,7 @@
 package com.home.tools.calculator.utils;
 
-public final class Helper {
-	private Helper(){
+public final class HelperUtil {
+	private HelperUtil(){
 		//Do nothing
 	}
 	public static void raiseException(String message) {

@@ -4,7 +4,9 @@ import com.home.tools.calculator.command.Command;
 import com.home.tools.calculator.expression.Expression;
 import com.home.tools.calculator.factory.CommandFactory;
 import com.home.tools.calculator.factory.ExpressionFactory;
-import com.home.tools.calculator.utils.Helper;
+import com.home.tools.calculator.utils.HelperUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -12,6 +14,7 @@ import java.util.Map;
 import java.util.StringJoiner;
 
 public class CommandExecutor {
+	Logger logger = LoggerFactory.getLogger(CommandExecutor.class);
 	private final Map<String, Command> commands;
 	private final Deque<Expression> history;
 	private final Deque<Expression> future;
@@ -52,14 +55,20 @@ public class CommandExecutor {
 				position+=command.length()+1;
 			}
 		} catch (IllegalArgumentException exception){
+			logger.warn("" ,exception);
 			errorMessage=String.format("Operator '%s' (position:%2d) %s", currentCommand,position,exception.getMessage());
+		} catch (Exception exception){
+			/**Exception is catched to allow the application to continue to service in case of Failure To be Refined further
+			 * based on usuage and exposure criterias*/
+			logger.error("Un Expected Exception " ,exception);
+			errorMessage  = "Unhandled Response";
 		}
 		return errorMessage.isEmpty() ? getStackState() : errorMessage + System.lineSeparator() + getStackState();
 	}
 
 	private void pushConstantExpression(String value) {
-		if (!Helper.isNumeric(value))
-			Helper.raiseException("Invalid expression " + value);
+		if (!HelperUtil.isNumeric(value))
+			HelperUtil.raiseException("Invalid expression " + value);
 		this.history.push(ExpressionFactory.createExpression(Double.valueOf(value)));
 	}
 

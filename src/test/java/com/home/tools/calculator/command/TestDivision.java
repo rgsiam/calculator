@@ -21,7 +21,7 @@ class TestDivision {
 	private Division division;
 		
 	@BeforeEach
-	public void setup() {
+	 void setup() {
 		history=new ArrayDeque<>();
 		future=new ArrayDeque<>();
 		division= new Division(history, future);
@@ -29,7 +29,7 @@ class TestDivision {
 
 	@Test
 	@DisplayName("Test Dividing 2 positive numbers should pass")
-	public void testDivisionOfNormalNumbers() {
+	 void testDivisionOfNormalNumbers() {
 		history.push(createExpression(10.0));
 		history.push(createExpression(10.0));
 		division.execute();
@@ -38,7 +38,7 @@ class TestDivision {
 	
 	@Test
 	@DisplayName("Test Dividing 2 mixed numbers should pass")
-	public void testDivisionOfMixedNumbersWithPrecision() {
+	 void testDivisionOfMixedNumbersWithPrecision() {
 		history.push(createExpression(15.0));
 		history.push(createExpression(-10.0));
 		division.execute();
@@ -47,16 +47,27 @@ class TestDivision {
 
 	@Test
 	@DisplayName("Test Dividing with Precision of 10 without loss")
-	public void testDivisionToCheckPrecision() {
-		history.push(createExpression(15.0));
-		history.push(createExpression(-10.0));
+	 void testDivisionToCheckPrecision() {
+		history.push(createExpression(1.0));
+		history.push(createExpression(6.0));
 		division.execute();
-		assertEquals("1.5",history.pop().toString());
+		assertEquals("0.1666666666",history.pop().toString());
+	}
+
+	@Test
+	@DisplayName("Test Dividing with zero should throw Exception")
+	 void testDivisionByZero() {
+		history.push(createExpression(1.0));
+		history.push(createExpression(0.0));
+		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
+			division.execute();
+		});
+		assertTrue(undefinedException.getMessage().contains("Cannot Divide by zero"));
 	}
 	
 	@Test
 	@DisplayName("Test Dividing with one input should throw Exception")
-	public void testDivisionInvalid() {
+	 void testDivisionInvalid() {
 		history.push(createExpression(-10.0));
 		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
 			division.execute();
