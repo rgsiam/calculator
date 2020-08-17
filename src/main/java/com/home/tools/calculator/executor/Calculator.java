@@ -7,9 +7,15 @@ package com.home.tools.calculator.executor;
  */
 public class Calculator {
     /**
-     * Holds the
+     * Holds the reference to the CommandExecutor
      */
     CommandExecutor commandExecutor = new CommandExecutor();
+
+    /**
+     * Parses the Input String to evaluate the Operands received
+     * @param inputExpression Input Expression from Client
+     * @return Return processed output from the Calculator
+     */
     public  String evaluate(String inputExpression) {
         return commandExecutor.evaluate(inputExpression);
     }
