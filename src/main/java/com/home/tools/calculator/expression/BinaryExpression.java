@@ -2,6 +2,11 @@ package com.home.tools.calculator.expression;
 
 import java.util.List;
 
+/**
+ * {@code BinaryExpression} defines the implementation of an {@link Expression} which operates on a two Operands
+ * Used to parse expressions with Binary Commands such as {Addition, Division etc}
+ * @since 1.0
+ */
 public class BinaryExpression extends Expression{
 	
 	private Expression firstExpression;

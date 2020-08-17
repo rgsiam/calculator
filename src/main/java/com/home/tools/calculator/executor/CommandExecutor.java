@@ -28,6 +28,12 @@ public class CommandExecutor {
 				);
 	}
 
+	/**
+	 * Evaluate the received input String and
+	 * @param input
+	 * @return Return {@link String} return the output of the commands executed
+	 * @throws IllegalArgumentException In case of Invalid Command or Commands with Insufficient input parameters
+	 */
 	public String evaluate(String line) {
 		String currentCommand = line;
 		int position = 1;
@@ -55,12 +61,12 @@ public class CommandExecutor {
 
 	}
 
-	public String getStackState() {
+	private String getStackState() {
 		return String.format("stack: %s", history.toString().replaceAll("\\[", "").replaceAll(",", "")
 				.replaceAll("]", ""));
 	}
 
-	protected void raiseException(String message) {
+	private void raiseException(String message) {
 		throw new IllegalArgumentException(message);
 	}
 

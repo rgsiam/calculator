@@ -4,6 +4,10 @@ import com.home.tools.calculator.expression.Expression;
 
 import java.util.Stack;
 
+/**
+ * Abstraction to be used to implement various Commands in a calculator
+ * Uses stack{@link Stack} to retain the history of Expression evaluated during execution of each Command
+ */
 public abstract class Command {
 	
 	protected Stack<Expression> history;
@@ -23,6 +27,9 @@ public abstract class Command {
 			raiseException(" insufficient parameters");
 	}
 	
+	/**
+	 * Executes command
+	 */
 	public abstract void execute();
 	
 }
