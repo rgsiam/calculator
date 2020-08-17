@@ -9,11 +9,18 @@ import java.util.Deque;
  * @since 1.0
  */
 public class Undo extends Command{
-
+	/**
+	 * Constructor
+	 * @param history  Queue with history of Expresions
+	 * @param future   Queue with Expresions for future
+	 */
 	public Undo(Deque<Expression> history, Deque<Expression> future) {
 		super(history, future);
 	}
-
+	/**
+	 * Execution of the command
+	 * @return List of Expressions
+	 */
 	@Override
 	public void execute() {
 		checkStackSize(1);

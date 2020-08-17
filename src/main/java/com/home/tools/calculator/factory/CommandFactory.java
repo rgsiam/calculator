@@ -9,10 +9,10 @@ import java.util.Deque;
  * Factory to be used to fetch desired Commands based on representation of the {@code Command}
  * @since 1.0
  */
-public class CommandFactory {
+public final class CommandFactory {
 
 	private CommandFactory (){
-		//Do Nothing
+		/** Factory Class*/
 	}
 	/**
 	 * Return Specific Command Implementions based on the param {command}

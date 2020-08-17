@@ -1,6 +1,7 @@
 package com.home.tools.calculator.command;
 
 import com.home.tools.calculator.expression.Expression;
+import com.home.tools.calculator.utils.HelperUtil;
 
 import java.util.Deque;
 
@@ -15,9 +16,9 @@ public abstract class Command {
 	protected Deque<Expression> future;
 
 	/**
-	 *
-	 * @param history
-	 * @param future
+	 * Constructor to initialize the member variables
+	 * @param history Queue to hold history of Expressions
+	 * @param future  Queue to hold Expressions for future usage
 	 * @throws IllegalArgumentException in case any of the arguments is null
 	 */
 	public Command(Deque<Expression> history, Deque<Expression> future) {
@@ -28,17 +29,18 @@ public abstract class Command {
 		this.future=future;
 	}
 
-	protected void raiseException(String message) {
-		throw new IllegalArgumentException(message);
-	}
-
+	/**
+	 * Check for size of the <pre>history</pre> Queue size if suitable to execute the Command
+	 * @param size Input size to validate against <pre>history</pre> Queue size
+	 * @throws IllegalArgumentException Exception thrown if size check fails
+	 */
 	protected void checkStackSize(int size) {
 		if(history.size()<size)
-			raiseException(" insufficient parameters");
+			HelperUtil.raiseException(" insufficient parameters");
 	}
 
 	/**
-	 * Executes command
+	 * Abstraction for execution of command
 	 */
 	public abstract void execute();
 

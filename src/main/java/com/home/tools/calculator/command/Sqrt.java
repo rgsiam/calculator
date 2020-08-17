@@ -9,11 +9,18 @@ import java.util.Deque;
  * @since 1.0
  */
 public class Sqrt extends Command{
-
+	/**
+	 * Constructor
+	 * @param history  Queue with history of Expresions
+	 * @param future   Queue with Expresions for future
+	 */
 	public Sqrt(Deque<Expression> history, Deque<Expression> future) {
 		super(history, future);
 	}
-
+	/**
+	 * Execution of the command
+	 * @return List of Expressions
+	 */
 	@Override
 	public void execute() {
 		checkStackSize(1);

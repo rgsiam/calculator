@@ -8,11 +8,17 @@ import java.util.List;
  * @since 1.0
  */
 public class ConstantExpression extends Expression{
-	
+	/**
+	 * Constructor
+	 * @param result  Result of the Expresion
+	 */
 	public ConstantExpression(Double result) {
 		super(result);
 	}
-	
+	/**
+	 * Returns the operands of this Expression
+	 * @return List of Expressions
+	 */
 	@Override
 	public List<Expression> operands() {
 		return Collections.emptyList();

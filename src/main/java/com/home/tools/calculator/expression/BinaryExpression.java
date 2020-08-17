@@ -11,13 +11,22 @@ public class BinaryExpression extends Expression{
 	
 	private Expression firstExpression;
 	private Expression secondExpression;
-	
+
+	/**
+	 * Constructor
+	 * @param firstExpression  first Expresion
+	 * @param secondExpression second Expresion
+	 * @param result Result of the Expresion
+	 */
 	public BinaryExpression(Expression firstExpression, Expression secondExpression, Double result) {
 		super(result);
 		this.firstExpression = firstExpression;
 		this.secondExpression = secondExpression;
 	}
-	
+	/**
+	 * Returns the operands of this Expression
+	 * @return List of Expressions
+	 */
 	@Override
 	public List<Expression> operands() {
 		return List.of(firstExpression, secondExpression);

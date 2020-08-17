@@ -13,13 +13,26 @@ import java.util.Deque;
 import java.util.Map;
 import java.util.StringJoiner;
 
+/**
+ * {@code CommandExecutor} Represents the core of the Calculator
+ * It is a Command Manager/Executor which Evaluates the received input String and executes relevant Commands by parsing the Input Expresion
+ * @since 1.0
+ */
 class CommandExecutor {
-
+	/**
+	 * Logger for logging the exceptions
+	 */
 	Logger logger = LogManager.getLogger(CommandExecutor.class);
+	/** Holds the map of Commands available in this executor*/
 	private final Map<String, Command> commands;
+	/** Queue to retain history of Execution of Expresions in Commands*/
 	private final Deque<Expression> history;
+	/** Queue to retain Execution of Expresions in Commands for future usage such as redo*/
 	private final Deque<Expression> future;
 
+	/**
+	 * Constructor to initialize the member variables
+	 */
 	public CommandExecutor() {
 		this.history = new ArrayDeque<>();
 		this.future = new ArrayDeque<>();
@@ -69,12 +82,20 @@ class CommandExecutor {
 		return errorMessage.isEmpty() ? getStackState() : errorMessage + System.lineSeparator() + getStackState();
 	}
 
+	/**
+	 * Pushes Constant Expresion to <pre>history</pre>
+	 * @param value Input for {@link com.home.tools.calculator.expression.ConstantExpression}
+	 */
 	private void pushConstantExpression(String value) {
 		if (!HelperUtil.isNumeric(value))
 			HelperUtil.raiseException("Invalid expression " + value);
 		this.history.push(ExpressionFactory.createExpression(Double.valueOf(value)));
 	}
 
+	/**
+	 * Format Queue content with <pre>space</pre> as Delimiter
+	 * @return Returns Formatted State of the Queue
+	 */
 	private String getStackState() {
 		StringJoiner joiner = new StringJoiner(" ");
 		history.descendingIterator().forEachRemaining(his -> joiner.add(his.toString()));

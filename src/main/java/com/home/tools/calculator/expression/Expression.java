@@ -16,7 +16,7 @@ public abstract class Expression {
 	private Double result;
 
 	/**
-	 * Default construct to be used by extended classes
+	 * Default constructor to be used by extended classes
 	 * @param result Result of the Expression as {@link Double}
 	 * @since 1.0
 	 * @throws IllegalArgumentException In case the argument is NULL

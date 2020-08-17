@@ -14,3 +14,11 @@
 11. All numbers should be formatted as plain decimal strings (ie. no engineering formatting).
 12. If an operator cannot find a sufficient number of parameters on the stack, a warning is displayed:operator (position: ): insufficient parameters
 13. After displaying the warning, all further processing of the string terminates and the current state of the stack is displayed.
+
+####Note: 
+1. Log4 config : Log file Path to be supplied at runtime with variable "LOG_ROOT"
+
+####TODO :
+1. Online Application : Decide if we would need Spring framework for example if we want to bring this as an Online Application
+2. Design choice : See if we can further decouple the CommandExecutor.java without loosing control over the Queues or State of the Application
+3. Implement Undo to also undo a Clear Command
