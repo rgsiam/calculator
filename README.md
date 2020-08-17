@@ -24,15 +24,15 @@
 # How to Build and Test application
    [maven command =>] mvn clean install
      
-###Command Line Usage :
+# Command Line Usage :
 1. Execute the method <pre>main</pre> of CalculatorREPL.java to use the RPN Calculator in Command line mode
 2. Alternatively use method <pre>evaluate</pre>  of Calculator.java
 
-####Note: 
+# Note: 
 1. Log4 config : Log file Path to be supplied at runtime with variable "LOG_PATH"
 
-####TODO :
-#####Design Choices
+# TODO :
+##### Design Choices
 1. Use Spring or not based on further Developmental inputs
 2. See if we can further decouple the CommandExecutor.java without loosing control over the Queues or State of the Application
 3. Use environment specific logging while we go online 
