@@ -23,6 +23,8 @@
 1. Log4 config : Log file Path to be supplied at runtime with variable "LOG_ROOT"
 
 ####TODO :
-1. Online Application : Decide if we would need Spring framework for example if we want to bring this as an Online Application
-2. Design choice : See if we can further decouple the CommandExecutor.java without loosing control over the Queues or State of the Application
-3. Implement Undo to also undo a Clear Command
+#####Design Choices
+1. Use Spring or not based on further Developmental inputs
+2. See if we can further decouple the CommandExecutor.java without loosing control over the Queues or State of the Application
+3. Use environment specific logging while we go online 
+4. Implement Undo to also **undo** a Clear Command!
