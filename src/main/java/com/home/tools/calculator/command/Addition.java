@@ -3,17 +3,17 @@ package com.home.tools.calculator.command;
 import com.home.tools.calculator.expression.Expression;
 import com.home.tools.calculator.factory.ExpressionFactory;
 
-import java.util.Stack;
+import java.util.Deque;
 
 /**
  *
  */
 public class Addition extends Command{
 
-	public Addition(Stack<Expression> history, Stack<Expression> future) {
+	public Addition(Deque<Expression> history, Deque<Expression> future) {
 		super(history, future);
 	}
-	
+
 	@Override
 	public void execute() {
 		checkStackSize(2);

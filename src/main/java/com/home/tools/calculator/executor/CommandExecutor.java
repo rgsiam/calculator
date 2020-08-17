@@ -5,27 +5,29 @@ import com.home.tools.calculator.expression.Expression;
 import com.home.tools.calculator.factory.CommandFactory;
 import com.home.tools.calculator.factory.ExpressionFactory;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Map;
-import java.util.Stack;
+import java.util.StringJoiner;
 
 public class CommandExecutor {
 	private final Map<String, Command> commands;
-	private final Stack<Expression> history;
-	private final Stack<Expression> future;
+	private final Deque<Expression> history;
+	private final Deque<Expression> future;
 
 	public CommandExecutor() {
-		this.history = new Stack<>();
-		this.future = new Stack<>();
+		this.history = new ArrayDeque<>();
+		this.future = new ArrayDeque<>();
 
 		this.commands = Map.of(
 				"+"    , CommandFactory.newCommand("+", history, future),
-				"-"    , CommandFactory.newCommand("-", history, future), 
+				"-"    , CommandFactory.newCommand("-", history, future),
 				"*"    , CommandFactory.newCommand("*", history, future),
-				"/"    , CommandFactory.newCommand("/", history, future), 
-				"sqrt" , CommandFactory.newCommand("sqrt", history, future), 
-				"undo" , CommandFactory.newCommand("undo", history, future), 
+				"/"    , CommandFactory.newCommand("/", history, future),
+				"sqrt" , CommandFactory.newCommand("sqrt", history, future),
+				"undo" , CommandFactory.newCommand("undo", history, future),
 				"clear", CommandFactory.newCommand("clear", history, future)
-				);
+		);
 	}
 
 	/**
@@ -34,14 +36,14 @@ public class CommandExecutor {
 	 * @return Return {@link String} return the output of the commands executed
 	 * @throws IllegalArgumentException In case of Invalid Command or Commands with Insufficient input parameters
 	 */
-	public String evaluate(String line) {
-		String currentCommand = line;
+	public String evaluate(String input) {
+		String currentCommand = input;
 		int position = 1;
 		String errorMessage = "";
 		try {
-			String[] commands = line.split(" ");
+			String[] commandsArray = input.split(" ");
 
-			for (String command : commands) {
+			for (String command : commandsArray) {
 				currentCommand = command;
 				Command cmd = this.commands.get(command);
 				if (cmd == null && !isNumeric(command))
@@ -62,8 +64,9 @@ public class CommandExecutor {
 	}
 
 	private String getStackState() {
-		return String.format("stack: %s", history.toString().replaceAll("\\[", "").replaceAll(",", "")
-				.replaceAll("]", ""));
+		StringJoiner joiner = new StringJoiner(" ");
+		history.descendingIterator().forEachRemaining(his -> joiner.add(his.toString()));
+		return String.format("stack: %s", joiner);
 	}
 
 	private void raiseException(String message) {

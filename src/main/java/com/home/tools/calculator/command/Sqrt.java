@@ -2,12 +2,11 @@ package com.home.tools.calculator.command;
 
 import com.home.tools.calculator.expression.Expression;
 import com.home.tools.calculator.factory.ExpressionFactory;
-
-import java.util.Stack;
+import java.util.Deque;
 
 public class Sqrt extends Command{
 
-	public Sqrt(Stack<Expression> history, Stack<Expression> future) {
+	public Sqrt(Deque<Expression> history, Deque<Expression> future) {
 		super(history, future);
 	}
 
