@@ -1,5 +1,5 @@
-package com.home.tools.calculator.app;
-import com.home.tools.calculator.executor.Calculator;
+package com.home.tools.calculator.executor;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
