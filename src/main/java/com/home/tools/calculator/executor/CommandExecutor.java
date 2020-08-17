@@ -15,6 +15,7 @@ import java.util.StringJoiner;
 
 public class CommandExecutor {
 	Logger logger = LoggerFactory.getLogger(CommandExecutor.class);
+
 	private final Map<String, Command> commands;
 	private final Deque<Expression> history;
 	private final Deque<Expression> future;
@@ -35,7 +36,9 @@ public class CommandExecutor {
 	}
 
 	/**
-	 * Evaluate the received input String and
+	 * Evaluate the received input String and executes relevant Commands by parsing the Input Expresion
+	 * 1. Returns <pre>Unhandled Response</pre> In case of an Unexpected internal exception
+	 * 2. In case of Unexecutable Commands it returns response with message to denote Invalid Command
 	 * @param input
 	 * @return Return {@link String} return the output of the commands executed
 	 * @throws IllegalArgumentException In case of Invalid Command or Commands with Insufficient input parameters
@@ -60,10 +63,14 @@ public class CommandExecutor {
 		} catch (Exception exception){
 			/**Exception is catched to allow the application to continue to service in case of Failure To be Refined further
 			 * based on usuage and exposure criterias*/
-			logger.error("Un Expected Exception " ,exception);
-			errorMessage  = "Unhandled Response";
+			logger.error("Unexpected Exception occurred : " ,exception);
+			errorMessage  = "Invalid response";
 		}
 		return errorMessage.isEmpty() ? getStackState() : errorMessage + System.lineSeparator() + getStackState();
+	}
+
+	public Map<String, Command> getCommands() {
+		return commands;
 	}
 
 	private void pushConstantExpression(String value) {
@@ -77,5 +84,6 @@ public class CommandExecutor {
 		history.descendingIterator().forEachRemaining(his -> joiner.add(his.toString()));
 		return joiner.toString();
 	}
+
 
 }

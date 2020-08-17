@@ -1,5 +1,9 @@
 package com.home.tools.calculator.executor;
 
+import com.home.tools.calculator.command.Addition;
+import com.home.tools.calculator.command.Command;
+import com.home.tools.calculator.factory.CommandFactory;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -60,5 +64,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         assertTrue(evaluatedResult.contains("Operator '*' (position:15)  insufficient parameters"));
         assertTrue(evaluatedResult.contains("11"));
     }
+
+     @Test
+     @DisplayName("Test the sanctity of the commands map initialized by the constructor")
+     @Disabled ("To be handled")
+     void testSanctityOfCommandsMap() {
+        commandExecutor.getCommands();
+         assertTrue("".contains("11"));
+     }
 
 }
