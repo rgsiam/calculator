@@ -13,8 +13,8 @@ import java.util.Deque;
 public class Division extends Command{
 	/**
 	 * Constructor
-	 * @param history  Queue with history of Expresions
-	 * @param future   Queue with Expresions for future
+	 * @param history  Queue with history of Expressions
+	 * @param future   Queue with Expressions for future
 	 */
 	public Division(Deque<Expression> history, Deque<Expression> future) {
 		super(history, future);

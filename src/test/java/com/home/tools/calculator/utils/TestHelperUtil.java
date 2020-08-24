@@ -20,18 +20,14 @@ class TestHelperUtil {
     @Test
     @DisplayName("Test the Exception Type thrown by raiseException")
      void testRaiseExceptionType() {
-        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
-          HelperUtil.raiseException("My Exception");
-        });
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> HelperUtil.raiseException("My Exception"));
         assertTrue(illegalArgumentException instanceof IllegalArgumentException);
     }
 
     @Test
     @DisplayName("Test the message thrown by raiseException")
      void testRaiseExceptionMessage() {
-        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> {
-            HelperUtil.raiseException("My Exception");
-        });
-        assertTrue(illegalArgumentException.getMessage().equals("My Exception"));
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> HelperUtil.raiseException("My Exception"));
+        assertEquals("My Exception", illegalArgumentException.getMessage());
     }
 }

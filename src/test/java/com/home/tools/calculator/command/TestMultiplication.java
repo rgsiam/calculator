@@ -21,7 +21,7 @@ class TestMultiplication {
 	private Multiplication multiplication;
 		
 	@BeforeEach
-	public void setup() {
+	 void setup() {
 		history=new ArrayDeque<>();
 		future=new ArrayDeque<>();
 		multiplication= new Multiplication(history, future);
@@ -29,16 +29,16 @@ class TestMultiplication {
 
 	@Test
 	@DisplayName("Test Multiplying 2 positive numbers should pass")
-	public void testMultiplicationNormal() {
+	 void testMultiplicationNormal() {
 		history.push(createExpression(10.0));
 		history.push(createExpression(10.0));
 		multiplication.execute();
-		assertEquals(history.peek().result().doubleValue(), 100.0);
+		assertEquals(100.0, history.peek().result().doubleValue());
 	}
 	
 	@Test
 	@DisplayName("Test Multiplying 2 mixed numbers should pass")
-	public void testMultiplicationOfMixedNumbersWithPrecision() {
+	 void testMultiplicationOfMixedNumbersWithPrecision() {
 		history.push(createExpression(10.1234342233456));
 		history.push(createExpression(-15.0));
 		multiplication.execute();
@@ -47,11 +47,9 @@ class TestMultiplication {
 	
 	@Test
 	@DisplayName("Test Multiplying with one input should throw Exception")
-	public void testMultiplicationInvalid() {
+	 void testMultiplicationInvalid() {
 		history.push(createExpression(-10.0));
-		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
-			multiplication.execute();
-        });
+		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> multiplication.execute());
         assertTrue(undefinedException.getMessage().contains("insufficient parameters"));
 	}
 }

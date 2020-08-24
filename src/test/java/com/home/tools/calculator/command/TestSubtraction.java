@@ -21,7 +21,7 @@ class TestSubtraction {
 	private Subtraction subtraction;
 		
 	@BeforeEach
-	public void setup() {
+	 void setup() {
 		history=new ArrayDeque<>();
 		future=new ArrayDeque<>();
 		subtraction= new Subtraction(history, future);
@@ -29,29 +29,27 @@ class TestSubtraction {
 
 	@Test
 	@DisplayName("Test Subtracting 2 positive numbers should pass")
-	public void testSubtractionNormal() {
+	 void testSubtractionNormal() {
 		history.push(createExpression(10.0));
 		history.push(createExpression(10.0));
 		subtraction.execute();
-		assertEquals(history.peek().result().doubleValue(), 0.0);
+		assertEquals(0.0, history.peek().result().doubleValue());
 	}
 	
 	@Test
 	@DisplayName("Test Subtracting 2 mixed numbers should pass")
-	public void testSubtractionOfMixedNumbersWithPrecision() {
+	 void testSubtractionOfMixedNumbersWithPrecision() {
 		history.push(createExpression(10.0));
 		history.push(createExpression(-15.0));
 		subtraction.execute();
-		assertEquals(history.peek().result().doubleValue(), 25.0);
+		assertEquals(25.0, history.peek().result().doubleValue());
 	}
 	
 	@Test
 	@DisplayName("Test Subtracting with just one number should throw Exception")
-	public void testSubtractionInvalid() {
+	 void testSubtractionInvalid() {
 		history.push(createExpression(-10.0));
-		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
-			subtraction.execute();
-        });
+		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> subtraction.execute());
         assertTrue(undefinedException.getMessage().contains("insufficient parameters"));
 	}
 }

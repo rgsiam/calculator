@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class UnaryExpression extends Expression {
 	/** Expresion*/
-	private Expression expression;
+	private final Expression expression;
 
 	/**
 	 * Constructor

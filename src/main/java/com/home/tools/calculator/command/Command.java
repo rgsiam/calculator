@@ -23,7 +23,7 @@ public abstract class Command {
 	 */
 	public Command(Deque<Expression> history, Deque<Expression> future) {
 		if(history == null || future == null){
-			throw new IllegalArgumentException ("Arguments to the Constructor cannot be null");
+			HelperUtil.raiseException("Arguments to the Constructor cannot be null");
 		}
 		this.history=history;
 		this.future=future;

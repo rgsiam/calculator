@@ -33,10 +33,9 @@
 
 # TODO :
 ##### Design Choices
-1. Use Spring or not based on further Developmental inputs
-2. See if we can further decouple the CommandExecutor.java without loosing control over the Queues or State of the Application
-3. Use environment specific logging while we go online 
-4. Implement Undo to also **undo** a Clear Command!
+1. Whether to use Spring based on further Developmental inputs
+2. Use environment specific logging while we go online 
+3. Implement Undo to also **undo** a Clear Command!
 
 # Mailing Lists
     - rgsiam@gmail.com
