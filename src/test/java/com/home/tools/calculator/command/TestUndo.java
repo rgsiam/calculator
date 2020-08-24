@@ -21,7 +21,7 @@ class TestUndo {
 	private Undo undo;
 		
 	@BeforeEach
-	public void setup() {
+	 void setup() {
 		history=new ArrayDeque<>();
 		future=new ArrayDeque<>();
 		undo= new Undo(history, future);
@@ -29,7 +29,7 @@ class TestUndo {
 
 	@Test
 	@DisplayName("Test Undo should remove the previous expression from history")
-	public void testUndoNormal() {
+	 void testUndoNormal() {
 		history.push(createExpression(25.0));
 		history.push(createExpression(10.0));
 		undo.execute();
@@ -38,7 +38,7 @@ class TestUndo {
 	
 	@Test
 	@DisplayName("Test Undo on empty history queue should throw Exception")
-	public void testUndoInvalid() {
+	 void testUndoInvalid() {
 		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
 			undo.execute();
         });

@@ -15,11 +15,11 @@ public final class CommandFactory {
 		/** Factory Class*/
 	}
 	/**
-	 * Return Specific Command Implementions based on the param {command}
+	 * Return Specific Command Implementation based on the param {command}
 	 * @param command representation of the {@code Command}
 	 * @param history  holds the history of expressions {@link Expression} in a stack {@link Deque}
 	 * @param future   holds the expressions removed from{@code history} {@link Expression} in a stack {@link Deque}
-	 * @return
+	 * @return Return <code>{@link Command}</code> from the Factory
 	 */
 	public static Command newCommand(String command, Deque<Expression> history, Deque<Expression> future) {
 		switch(command) {

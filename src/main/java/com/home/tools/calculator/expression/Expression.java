@@ -1,5 +1,7 @@
 package com.home.tools.calculator.expression;
 
+import com.home.tools.calculator.utils.HelperUtil;
+
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.List;
@@ -13,7 +15,7 @@ public abstract class Expression {
 	/**
 	 * Used to hold the result of an Expression
 	 */
-	private Double result;
+	private final Double result;
 
 	/**
 	 * Default constructor to be used by extended classes
@@ -23,7 +25,7 @@ public abstract class Expression {
 	 */
 	public Expression(Double result) {
 		if(result == null){
-			throw new IllegalArgumentException("Argument to the Constructor cannot be null");
+			HelperUtil.raiseException("Argument to the Constructor cannot be null");
 		}
 		this.result=result;
 	}

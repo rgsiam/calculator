@@ -65,18 +65,14 @@ class TestCommandFactory {
     @Test
     @DisplayName("Test creation of an non implemented command")
     void testCreationOfAnUndefinedCommand() {
-        IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
-            CommandFactory.newCommand("crazy", history, future);
-        });
+        IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> CommandFactory.newCommand("crazy", history, future));
         assertTrue(undefinedException.getMessage().contains("Invalid Command crazy"));
     }
 
     @Test
     @DisplayName("Test creation commands with history Queue parameter as NULL")
     void testCreationOfCommandWithHistoryQueueAsNull() {
-        IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
-            CommandFactory.newCommand("+", null, future);
-        });
+        IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> CommandFactory.newCommand("+", null, future));
         assertTrue(undefinedException.getMessage().contains("Arguments to the Constructor cannot be null"));
     }
 
@@ -84,9 +80,7 @@ class TestCommandFactory {
     @Test
     @DisplayName("Test creation commands with future Queue parameter as NULL")
     void testCreationOfCommandWithFutureQueueAsNull() {
-        IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
-            CommandFactory.newCommand("-", history, null);
-        });
+        IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> CommandFactory.newCommand("-", history, null));
         assertTrue(undefinedException.getMessage().contains("Arguments to the Constructor cannot be null"));
     }
 

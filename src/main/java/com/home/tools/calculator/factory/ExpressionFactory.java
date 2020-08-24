@@ -25,7 +25,7 @@ public final class ExpressionFactory {
 	/**
 	 * Create Expression
 	 * @param e1 Expresion input
-	 * @param result
+	 * @param result Result of the Unary Expression
 	 * @return {@link UnaryExpression}
 	 */
 	public static Expression createExpression(Expression e1,Double result) {

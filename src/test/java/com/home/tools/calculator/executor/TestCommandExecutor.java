@@ -1,9 +1,5 @@
 package com.home.tools.calculator.executor;
 
-import com.home.tools.calculator.command.Addition;
-import com.home.tools.calculator.command.Command;
-import com.home.tools.calculator.factory.CommandFactory;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

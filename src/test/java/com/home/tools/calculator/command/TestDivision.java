@@ -59,9 +59,7 @@ class TestDivision {
 	 void testDivisionByZero() {
 		history.push(createExpression(1.0));
 		history.push(createExpression(0.0));
-		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
-			division.execute();
-		});
+		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> division.execute());
 		assertTrue(undefinedException.getMessage().contains("Cannot Divide by zero"));
 	}
 	
@@ -69,9 +67,7 @@ class TestDivision {
 	@DisplayName("Test Dividing with one input should throw Exception")
 	 void testDivisionInvalid() {
 		history.push(createExpression(-10.0));
-		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
-			division.execute();
-        });
+		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> division.execute());
         assertTrue(undefinedException.getMessage().contains("insufficient parameters"));
 	}
 }

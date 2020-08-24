@@ -36,25 +36,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
      @Test
      @DisplayName("Test creation failure of Constant Expresion when result is NULL")
      void testCreationFailureOfConstantExpresion() {
-         IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
-             ExpressionFactory.createExpression(null);
-         });
+         IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> ExpressionFactory.createExpression(null));
          assertTrue(undefinedException.getMessage().contains("Argument to the Constructor cannot be null"));
      }
      @Test
      @DisplayName("Test creation failure of Unary Expresion when result is NULL")
      void testCreationFailureOfUnaryExpression() {
-         IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
-             ExpressionFactory.createExpression(firstExpression,null);
-         });
+         IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> ExpressionFactory.createExpression(firstExpression,null));
          assertTrue(undefinedException.getMessage().contains("Argument to the Constructor cannot be null"));
      }
      @Test
      @DisplayName("Test creation failure of Binary Expresion when result is NULL")
      void testCreationFailureOfBinaryExpression() {
-         IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
-             ExpressionFactory.createExpression(firstExpression, secondExpression,null);
-         });
+         IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> ExpressionFactory.createExpression(firstExpression, secondExpression,null));
          assertTrue(undefinedException.getMessage().contains("Argument to the Constructor cannot be null"));
      }
 }

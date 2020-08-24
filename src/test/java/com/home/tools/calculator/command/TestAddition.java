@@ -21,7 +21,7 @@ class TestAddition {
 	private Addition addition;
 		
 	@BeforeEach
-	public void setup() {
+	 void setup() {
 		history=new ArrayDeque<>();
 		future=new ArrayDeque<>();
 		addition= new Addition(history, future);
@@ -29,7 +29,7 @@ class TestAddition {
 
 	@Test
 	@DisplayName("Test Adding 2 positive numbers should pass")
-	public void testAdditionNormal() {
+	 void testAdditionNormal() {
 		history.push(createExpression(10.0));
 		history.push(createExpression(10.0));
 		addition.execute();
@@ -38,7 +38,7 @@ class TestAddition {
 	
 	@Test
 	@DisplayName("Test Adding 2 mixed numbers should pass with Precision check")
-	public void testAdditionOfMixedNumbersWithPrecision() {
+	 void testAdditionOfMixedNumbersWithPrecision() {
 		history.push(createExpression(-10.0));
 		history.push(createExpression(15.127339302022627));
 		addition.execute();
@@ -47,11 +47,9 @@ class TestAddition {
 	
 	@Test
 	@DisplayName("Test Adding 1 number alone should throw Exception")
-	public void testAdditionInvalid() {
+	 void testAdditionInvalid() {
 		history.push(createExpression(-10.0));
-		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
-			addition.execute();
-        });
+		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> addition.execute());
         assertTrue(undefinedException.getMessage().contains("insufficient parameters"));
     
 	}

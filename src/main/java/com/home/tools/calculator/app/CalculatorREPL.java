@@ -21,7 +21,7 @@ public class CalculatorREPL {
             if(inputExpression.isEmpty()){
                 break;
             } else{
-                System.out.println(String.format("==> %s", calculator.evaluate(inputExpression)));
+                System.out.println("==> " + calculator.evaluate(inputExpression));
             }
         }
     }

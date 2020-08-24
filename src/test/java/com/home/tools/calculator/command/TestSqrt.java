@@ -21,7 +21,7 @@ class TestSqrt {
 	private Sqrt sqrt;
 		
 	@BeforeEach
-	public void setup() {
+	 void setup() {
 		history=new ArrayDeque<>();
 		future=new ArrayDeque<>();
 		sqrt= new Sqrt(history, future);
@@ -29,18 +29,16 @@ class TestSqrt {
 
 	@Test
 	@DisplayName("Test Square root of a number should pass")
-	public void testSqrtNormal() {
+	 void testSqrtNormal() {
 		history.push(createExpression(25.0));
 		sqrt.execute();
-		assertEquals(history.peek().result().doubleValue(), 5.0);
+		assertEquals(5.0, history.peek().result().doubleValue());
 	}
 	
 	@Test
 	@DisplayName("Test Square root of no number should throw Exception")
-	public void testSqrtInvalid() {
-		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> {
-			sqrt.execute();
-        });
+	 void testSqrtInvalid() {
+		IllegalArgumentException undefinedException = assertThrows(IllegalArgumentException.class, () -> sqrt.execute());
         assertTrue(undefinedException.getMessage().contains("insufficient parameters"));
 	}
 }
