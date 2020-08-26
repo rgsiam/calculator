@@ -53,12 +53,11 @@ class CommandExecutor {
 			for (String command : commandsArray) {
 				currentCommand = command;
 				isNumeric = HelperUtil.isNumeric(currentCommand);
-				Command cmd = isNumeric ? null : CommandFactory.newCommand(command, history, future);
-				if(cmd != null) {
-					cmd.execute();
+				if(isNumeric) {
+					pushConstantExpression(command);
 				}
 				else {
-					pushConstantExpression(command);
+					CommandFactory.newCommand(command, history, future).execute();
 				}
 				position+=command.length()+1;
 			}
