@@ -9,7 +9,11 @@ public class Calculator {
     /**
      * Holds the reference to the CommandExecutor
      */
-    CommandExecutor commandExecutor = new CommandExecutor();
+    private CommandExecutor commandExecutor;
+
+    public Calculator() {
+        this.commandExecutor = new CommandExecutor();
+    }
 
     /**
      * Parses the Input String to evaluate the Operands received
