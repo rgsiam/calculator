@@ -26,7 +26,7 @@ public class CalculatorREPL {
             if(inputExpression.isEmpty()){
                 break;
             } else{
-                logger.info("==> {}" ,( calculator.evaluate(inputExpression) + NEW_LINE));
+                logger.info("==> {} {}" , calculator.evaluate(inputExpression) , NEW_LINE);
             }
         }
     }
