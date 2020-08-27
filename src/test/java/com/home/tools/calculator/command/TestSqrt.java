@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.Stack;
+import java.util.Stack;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,14 +16,14 @@ import com.home.tools.calculator.expression.Expression;
 
 class TestSqrt {
 	
-	private Deque<Expression> history;
-	private Deque<Expression> future;
+	private Stack<Expression> history;
+	private Stack<Expression> future;
 	private Sqrt sqrt;
 		
 	@BeforeEach
 	 void setup() {
-		history=new ArrayDeque<>();
-		future=new ArrayDeque<>();
+		history=new Stack<>();
+		future=new Stack<>();
 		sqrt= new Sqrt(history, future);
 	}
 

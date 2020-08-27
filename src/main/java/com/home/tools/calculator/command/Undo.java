@@ -2,7 +2,7 @@ package com.home.tools.calculator.command;
 
 import com.home.tools.calculator.expression.Expression;
 
-import java.util.Deque;
+import java.util.Stack;
 
 /**
  * Undo Command Implementation
@@ -14,7 +14,7 @@ public class Undo extends Command{
 	 * @param history  Queue with history of Expressions
 	 * @param future   Queue with Expressions for future
 	 */
-	public Undo(Deque<Expression> history, Deque<Expression> future) {
+	public Undo(Stack<Expression> history, Stack<Expression> future) {
 		super(history, future);
 	}
 	/**

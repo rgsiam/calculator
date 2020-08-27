@@ -5,16 +5,16 @@ import com.home.tools.calculator.expression.Expression;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.Stack;
+import java.util.Stack;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TestCommandFactory {
 
-    Deque<Expression> history = new ArrayDeque<>();
-    Deque<Expression> future = new ArrayDeque<>();
+    Stack<Expression> history = new Stack<>();
+    Stack<Expression> future = new Stack<>();
 
     @Test
     @DisplayName("Test creation of Addition command")

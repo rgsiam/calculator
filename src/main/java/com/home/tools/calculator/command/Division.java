@@ -4,7 +4,7 @@ import com.home.tools.calculator.expression.Expression;
 import com.home.tools.calculator.factory.ExpressionFactory;
 import com.home.tools.calculator.utils.HelperUtil;
 
-import java.util.Deque;
+import java.util.Stack;
 
 /**
  * Division Command Implementation
@@ -16,7 +16,7 @@ public class Division extends Command{
 	 * @param history  Queue with history of Expressions
 	 * @param future   Queue with Expressions for future
 	 */
-	public Division(Deque<Expression> history, Deque<Expression> future) {
+	public Division(Stack<Expression> history, Stack<Expression> future) {
 		super(history, future);
 	}
 	/**

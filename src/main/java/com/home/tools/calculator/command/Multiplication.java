@@ -3,7 +3,7 @@ package com.home.tools.calculator.command;
 import com.home.tools.calculator.expression.Expression;
 import com.home.tools.calculator.factory.ExpressionFactory;
 
-import java.util.Deque;
+import java.util.Stack;
 
 /**
  * Multiplication Command Implementation
@@ -15,7 +15,7 @@ public class Multiplication extends Command{
 	 * @param history  Queue with history of Expressions
 	 * @param future   Queue with Expressions for future
 	 */
-	public Multiplication(Deque<Expression> history, Deque<Expression> future) {
+	public Multiplication(Stack<Expression> history, Stack<Expression> future) {
 		super(history, future);
 	}
 	/**

@@ -7,8 +7,7 @@ import com.home.tools.calculator.utils.HelperUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.Stack;
 import java.util.StringJoiner;
 
 /**
@@ -22,16 +21,16 @@ class CommandExecutor {
 	 */
 	Logger logger = LogManager.getLogger(CommandExecutor.class);
 	/** Queue to retain history of Execution of Expressions in Commands*/
-	private final Deque<Expression> history;
+	private final Stack<Expression> history;
 	/** Queue to retain Execution of Expressions in Commands for future usage such as redo*/
-	private final Deque<Expression> future;
+	private final Stack<Expression> future;
 
 	/**
 	 * Constructor to initialize the member variables
 	 */
 	public CommandExecutor() {
-		this.history = new ArrayDeque<>();
-		this.future = new ArrayDeque<>();
+		this.history = new Stack<>();
+		this.future = new Stack<>();
 	}
 
 	/**
@@ -88,7 +87,7 @@ class CommandExecutor {
 	 */
 	private String getQueueState() {
 		StringJoiner joiner = new StringJoiner(" ");
-		history.descendingIterator().forEachRemaining(his -> joiner.add(his.toString()));
+		history.iterator().forEachRemaining(his -> joiner.add(his.toString()));
 		return joiner.toString();
 	}
 

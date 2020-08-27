@@ -3,17 +3,17 @@ package com.home.tools.calculator.command;
 import com.home.tools.calculator.expression.Expression;
 import com.home.tools.calculator.utils.HelperUtil;
 
-import java.util.Deque;
+import java.util.Stack;
 
 /**
  * Abstraction to be used to implement various Commands in a calculator
- * Uses stack{@link Deque} to retain the history of Expression evaluated during execution of each Command
+ * Uses stack{@link Stack} to retain the history of Expression evaluated during execution of each Command
  * @since 1.0
  */
 public abstract class Command {
 
-	protected Deque<Expression> history;
-	protected Deque<Expression> future;
+	protected Stack<Expression> history;
+	protected Stack<Expression> future;
 
 	/**
 	 * Constructor to initialize the member variables
@@ -21,7 +21,7 @@ public abstract class Command {
 	 * @param future  Queue to hold Expressions for future usage
 	 * @throws IllegalArgumentException in case any of the arguments is null
 	 */
-	public Command(Deque<Expression> history, Deque<Expression> future) {
+	public Command(Stack<Expression> history, Stack<Expression> future) {
 		if(history == null || future == null){
 			HelperUtil.raiseException("Arguments to the Constructor cannot be null");
 		}

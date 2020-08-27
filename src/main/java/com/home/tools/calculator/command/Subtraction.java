@@ -3,7 +3,7 @@ package com.home.tools.calculator.command;
 import com.home.tools.calculator.expression.Expression;
 import com.home.tools.calculator.factory.ExpressionFactory;
 
-import java.util.Deque;
+import java.util.Stack;
 
 /**
  * Subtraction Command Implementation
@@ -15,7 +15,7 @@ public class Subtraction extends Command{
 	 * @param history  Queue with history of Expressions
 	 * @param future   Queue with Expressions for future
 	 */
-	public Subtraction(Deque<Expression> history, Deque<Expression> future) {
+	public Subtraction(Stack<Expression> history, Stack<Expression> future) {
 		super(history, future);
 	}
 	/**
