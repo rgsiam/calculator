@@ -79,8 +79,6 @@ class CommandExecutor {
 	 * @param value Input for {@link com.home.tools.calculator.expression.ConstantExpression}
 	 */
 	private void pushConstantExpression(String value) {
-		if (!HelperUtil.isNumeric(value))
-			HelperUtil.raiseException("Invalid expression " + value);
 		this.history.push(ExpressionFactory.createExpression(Double.valueOf(value)));
 	}
 
